@@ -1,3 +1,7 @@
+Season of Discovery Update (1.1.6-sod) — by Hexx
+---------------------------------------
+* Fixed Occult Poison tracking: the button now counts both Rank I and Rank II and crafts the highest rank you know (previously only handled Rank I)
+
 Season of Discovery Update (1.1.5-sod) — by Hexx
 ---------------------------------------
 * Updated Interface version for Classic Era 1.15.9

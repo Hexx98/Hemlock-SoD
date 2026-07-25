@@ -43,6 +43,13 @@ local reagentIDs = {5140}
 
 --[[*** End Configuration ***]]--
 
+--[[ Some poisons (e.g. Occult Poison I) carry their rank as part of the base item name.
+     Strip a trailing " I"/" II"/... so rank tracking works like every other poison. ]]--
+local function StripPoisonRank(name)
+	if not name then return name end
+	return (name:gsub("%s+[IVX]+$", ""))
+end
+
 Hemlock = LibStub("AceAddon-3.0"):NewAddon("Hemlock", "AceConsole-3.0", "AceEvent-3.0", "AceTimer-3.0")
 
 local defaults = {
@@ -293,7 +300,7 @@ function Hemlock:InitializeDB()
 		local item = Item:CreateFromItemID(v)
 		item:ContinueOnItemLoad(function()
 			local itemName = GetItemInfo(v)	
-			defaults.profile.poisonRequirements[itemName] = 0
+			defaults.profile.poisonRequirements[StripPoisonRank(itemName)] = 0
 		end)
 	end
 	for k,v in ipairs(reagentIDs) do
@@ -374,6 +381,7 @@ function Hemlock:MakeFrame(itemID, space, lastFrame, frameType)
 	local alternativeWoundPoisonIcon = Hemlock.db.profile.options.alternativeWoundPoisonIcon
 	local alternativeCripplingPoisonIcon = Hemlock.db.profile.options.alternativeCripplingPoisonIcon
 	local itemName, _, _, _, _, _, _, _, _, invTexture = GetItemInfo(itemID)
+	itemName = StripPoisonRank(itemName) -- "Occult Poison I" -> "Occult Poison"
 	-- Get wound poison ID based on the rank
 	for k,v in ipairs(woundPoisonIDs) do
 		if itemID == v then
@@ -847,6 +855,7 @@ function Hemlock:BAG_UPDATE(bag_id)
 		for k, f in pairs(self.frames) do
 			if f then
 				local itemName, _, _, _, _, _, _, _, _, invTexture = GetItemInfo(f.item_id)
+				itemName = StripPoisonRank(itemName)
 				if f.item_type == 1 then
 					Hemlock:ButtonText(f,itemName,f.item_type)
 				elseif f.item_type == 2 then
@@ -911,7 +920,7 @@ function Hemlock:GetPoisonsInInventory(name)
 	self.ignoreLowerRanks = Hemlock.db.profile.options.ignoreLowerRankPoisons
 	if not self.ignoreLowerRanks then
 		local totalCount = 0
-		local rankStrings = {" X", " IX", " VIII", " VII", " VI", " V", " IV", " III", " II", "I", ""}
+		local rankStrings = {" X", " IX", " VIII", " VII", " VI", " V", " IV", " III", " II", " I", "I", ""}
 		for idx, str in ipairs(rankStrings) do
 			itemName = name .. str
 			count = GetItemCount(itemName)  or 0

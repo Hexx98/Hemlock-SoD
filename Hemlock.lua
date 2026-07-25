@@ -31,7 +31,8 @@ Dependencies: Ace-3.0, LibDropdown-1.0
 local safeIDs = {6947, 5173, 3775}
 
 --[[ These should be the rank 1 poison IDs - ie, without a rank suffix! ]]--
-local poisonIDs = {6947, 2892, 3775, 10918, 5237}
+--[[ Season of Discovery exclusive poisons: 217345 Sebacious, 217346 Numbing, 217347 Atrophic, 226374 Occult I ]]--
+local poisonIDs = {6947, 2892, 3775, 10918, 5237, 217345, 217346, 217347, 226374}
 
 --[[ These are all the Wound Poison item IDs, used for alternative icon ]]--
 local woundPoisonIDs = {10918,10920,10921,10922}
@@ -956,6 +957,7 @@ function Hemlock:GetMaxPoisonRank(poisonName)
 			end
 		end
 	end
+	if not ranks[1] then return end -- recipe not learned; bail gracefully instead of erroring
 	return ranks[1][1], ranks[1][2]
 end
 

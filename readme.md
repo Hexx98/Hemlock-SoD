@@ -1,3 +1,10 @@
+Season of Discovery Update (1.1.5-sod) — by Hexx
+---------------------------------------
+* Updated Interface version for Classic Era 1.15.9
+* Added buttons for Season of Discovery poisons: Sebacious (217345), Numbing (217346), Atrophic (217347), Occult Poison I (226374)
+* Added a safety check so clicking a poison you haven't learned no longer throws an error
+* Note: Occult Poison uses roman-numeral ranks (I / II) in its base name, so inventory/rank matching may be imperfect if both ranks are known
+
 Classic Update
 ---------------------------------------
 * Migrated to Ace3 / LibDropDown

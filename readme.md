@@ -1,3 +1,8 @@
+Season of Discovery Update (1.1.7-sod) — by Hexx
+---------------------------------------
+* Fixed a buy-confirmation error on newer clients: Blizzard's reworked StaticPopup removed the money frame, so the reagent cost is now shown as text with coin icons instead
+* Removed a deprecated XML backdrop from HemlockFrame that spammed an "Unrecognized XML attribute" warning (BugSack) on merchant open
+
 Season of Discovery Update (1.1.6-sod) — by Hexx
 ---------------------------------------
 * Fixed Occult Poison tracking: the button now counts both Rank I and Rank II and crafts the highest rank you know (previously only handled Rank I)

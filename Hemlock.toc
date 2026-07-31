@@ -1,5 +1,5 @@
 ## Interface: 11509
-## Version: 1.1.6-sod
+## Version: 1.1.7-sod
 ## Title: Hemlock for SoD
 ## Notes: Minimalistic addon to automate poison buying and creation (Season of Discovery poison support)
 ## Author: Antiarc, Grome (original). Latest revision by Hexx.

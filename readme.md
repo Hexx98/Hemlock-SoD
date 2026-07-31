@@ -1,3 +1,7 @@
+Season of Discovery Update (1.1.9-sod) — by Hexx
+---------------------------------------
+* Fixed a load error in the Blizzard options panel: InterfaceOptions_AddCategory was removed on newer clients, now registers via the Settings API
+
 Season of Discovery Update (1.1.8-sod) — by Hexx
 ---------------------------------------
 * Fixed a right-click dropdown error: Blizzard removed GetMouseFocus() on newer clients, so LibDropdown now falls back to GetMouseFoci()

@@ -4,7 +4,14 @@ local addOnName = ...
 -- main frame
 frame = CreateFrame("Frame","HemlockOptions")
 frame.name = addOnName
-InterfaceOptions_AddCategory(frame)
+-- InterfaceOptions_AddCategory was replaced by the Settings API on modern clients.
+if Settings and Settings.RegisterCanvasLayoutCategory and Settings.RegisterAddOnCategory then
+	local category = Settings.RegisterCanvasLayoutCategory(frame, frame.name)
+	category.ID = frame.name
+	Settings.RegisterAddOnCategory(category)
+elseif InterfaceOptions_AddCategory then
+	InterfaceOptions_AddCategory(frame)
+end
 frame:Hide()
 
 frame:SetScript("OnShow", function(frame)

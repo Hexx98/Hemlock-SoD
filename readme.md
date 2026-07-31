@@ -1,3 +1,7 @@
+Season of Discovery Update (1.1.8-sod) — by Hexx
+---------------------------------------
+* Fixed a right-click dropdown error: Blizzard removed GetMouseFocus() on newer clients, so LibDropdown now falls back to GetMouseFoci()
+
 Season of Discovery Update (1.1.7-sod) — by Hexx
 ---------------------------------------
 * Fixed a buy-confirmation error on newer clients: Blizzard's reworked StaticPopup removed the money frame, so the reagent cost is now shown as text with coin icons instead

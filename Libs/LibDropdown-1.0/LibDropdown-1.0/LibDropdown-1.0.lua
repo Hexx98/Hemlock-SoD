@@ -24,6 +24,10 @@ local CreateFrame = CreateFrame
 local PlaySound = PlaySound
 local ShowUIPanel = ShowUIPanel
 local GetMouseFocus = GetMouseFocus
+if not GetMouseFocus and GetMouseFoci then
+	-- GetMouseFocus() was removed on modern clients; GetMouseFoci() returns a table of frames under the mouse.
+	GetMouseFocus = function() return (GetMouseFoci())[1] end
+end
 local UISpecialFrames = UISpecialFrames
 
 local ChatFrame1 = ChatFrame1
